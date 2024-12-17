@@ -7,6 +7,8 @@ import com.example.productcatalogservice.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -20,29 +22,38 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping
-    public List<Product> getAllProducts() {
-        List<Product> products = new ArrayList<>();
-        Product product = new Product();
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
 
-        product.setId(1L);
-        product.setProduct_name("Goggles");
-        product.setProduct_description("The Goggles");
-        product.setProduct_price(3.0);
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
 
-        products.add(product);
+        List<ProductDTO> productDTOS = new ArrayList<>();
 
-        return products;
+        for (Product product : products) {
+            productDTOS.add(from(product));
+        }
+
+        return new ResponseEntity<>(productDTOS, HttpStatus.OK);
     }
 
     @GetMapping("{productId}")
     public ResponseEntity<ProductDTO>  getProductById(@PathVariable("productId") Long id) {
+        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
         // Validation
         if (id <= 0) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            headers.add("my-custom-header", "invalid-id");
+            headers.add("my-custom-header", "bad-request");
+            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
         }
         Product product = productService.getProductById(id);
-        if (product == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<>(from(product), HttpStatus.OK);
+        if (product == null) {
+            headers.add("my-custom-header", "product-is-null");
+            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
+        }
+        headers.add("my-custom-header", "product-found");
+        return new ResponseEntity<>(from(product), headers, HttpStatus.OK);
     }
 
     @PostMapping
