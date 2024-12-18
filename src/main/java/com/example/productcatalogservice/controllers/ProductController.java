@@ -2,6 +2,7 @@ package com.example.productcatalogservice.controllers;
 
 import com.example.productcatalogservice.dtos.CategoryDTO;
 import com.example.productcatalogservice.dtos.ProductDTO;
+import com.example.productcatalogservice.models.Category;
 import com.example.productcatalogservice.models.Product;
 import com.example.productcatalogservice.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,29 +41,31 @@ public class ProductController {
 
     @GetMapping("{productId}")
     public ResponseEntity<ProductDTO>  getProductById(@PathVariable("productId") Long id) {
-        MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
-        // Validation
-        if (id <= 0) {
-            headers.add("my-custom-header", "invalid-id");
-            headers.add("my-custom-header", "bad-request");
-            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
+        try {
+            MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+            // Validation
+            if (id <= 0) {
+                headers.add("my-custom-header", "invalid-id");
+                headers.add("my-custom-header", "bad-request");
+                throw new IllegalArgumentException("Please try with productId > 0");
+            }
+            Product product = productService.getProductById(id);
+            if (product == null) {
+                headers.add("my-custom-header", "product-is-null");
+                return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
+            }
+            headers.add("my-custom-header", "product-found");
+            return new ResponseEntity<>(from(product), headers, HttpStatus.OK);
+        } catch (IllegalArgumentException exception) {
+            throw exception;
         }
-        Product product = productService.getProductById(id);
-        if (product == null) {
-            headers.add("my-custom-header", "product-is-null");
-            return new ResponseEntity<>(headers, HttpStatus.BAD_REQUEST);
-        }
-        headers.add("my-custom-header", "product-found");
-        return new ResponseEntity<>(from(product), headers, HttpStatus.OK);
+
     }
 
-    @PostMapping
-    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO productDto) {
-        var productId = productDto.getId();
-        if (productId <= 0) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-        return new ResponseEntity<>(productDto, HttpStatus.CREATED);
+    @PutMapping("{productId}")
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable("productId") Long id,  @RequestBody ProductDTO productDto) {
+        Product product = productService.updateProduct(id, from(productDto));
+        return new ResponseEntity<>(from(product), HttpStatus.OK);
     }
 
     private ProductDTO from(Product product) {
@@ -82,5 +85,26 @@ public class ProductController {
         }
 
         return productDTO;
+    }
+
+    private Product from(ProductDTO productDTO) {
+        Product product = new Product();
+        product.setId(productDTO.getId());
+        product.setProduct_name(productDTO.getProduct_name());
+        product.setProduct_description(productDTO.getProduct_description());
+        product.setProduct_price(productDTO.getProduct_price());
+
+        if (productDTO.getCategory() != null) {
+            CategoryDTO categoryDTO = productDTO.getCategory();
+            Category category = new Category();
+
+            category.setId(categoryDTO.getId());
+            category.setName(categoryDTO.getName());
+            category.setDescription(categoryDTO.getDescription());
+
+            product.setCategory(category);
+        }
+        System.out.println("Product: " + product);
+        return product;
     }
 }
