@@ -1,7 +1,6 @@
 package com.example.productcatalogservice.clients;
 
 import com.example.productcatalogservice.dtos.FakeStoreProductDTO;
-import com.example.productcatalogservice.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpMethod;
