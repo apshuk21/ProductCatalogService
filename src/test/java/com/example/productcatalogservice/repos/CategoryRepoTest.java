@@ -22,14 +22,15 @@ class CategoryRepoTest {
     @Transactional
     public void testFetchTypes() {
         Optional<Category> category = categoryRepo.findById(12L);
-
-        if (category.isPresent()) {
-            List<Product> products = category.get().getProducts();
-
-            for(Product product : products) {
-                System.out.println(product.getProduct_name());
-            }
-        }
+        category.ifPresent(value -> System.out.println(value.getName()));
+        System.out.println("--------------------------------------------");
+//        if (category.isPresent()) {
+//            List<Product> products = category.get().getProducts();
+//
+//            for(Product product : products) {
+//                System.out.println(product.getProduct_name());
+//            }
+//        }
     }
 
 }

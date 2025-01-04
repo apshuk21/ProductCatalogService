@@ -1,0 +1,18 @@
+FetchType                  FetchMode                         Result
+LAZY                       SELECT                            Asked for products explicitly -- Queries count - 2 SELECT Queries
+                                                             Not asked for products explicitly -- Queries count - 1 SELECT Query
+
+EAGER                      SELECT                            Asked for products -- Queries count - 2 SELECT Queries
+                                                             Not asked for products -- Queries count - 2 SELECT Queries (this case is irrelevant)
+
+LAZY                       JOIN                              Asked for products -- Queries count - 1 JOIN Query (In case of LAZY with JOIN, JOIN takes priority)
+                                                             Not asked for products -- Queries count - 1 JOIN Query
+
+EAGER                      JOIN                              Asked for products -- Queries count - 1 JOIN Query
+                                                             Not asked for products -- Queries count - 1 JOIN Query
+
+LAZY                       SUB-SELECT                        Asked for products -- Queries count - 2 SELECT Queries
+                                                             Not asked for products -- Queries count - 1 SELECT Query
+
+EAGER                      SUB-SELECT                        Asked for products -- Queries count - 2 SELECT Queries
+                                                             Not asked for products -- Queries count - 2 SELECT Queries
