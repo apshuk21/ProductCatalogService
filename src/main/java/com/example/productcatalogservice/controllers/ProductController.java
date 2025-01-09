@@ -8,7 +8,12 @@ import com.example.productcatalogservice.models.State;
 import com.example.productcatalogservice.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -32,6 +37,30 @@ public class ProductController {
         }
 
         return productDTOS;
+    }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable("productId") Long id) {
+        try {
+            MultiValueMap<String, String> headers = new LinkedMultiValueMap<>();
+
+            if (id <= 0) {
+                throw new IllegalArgumentException("Invalid product id. Please try with product id > 0");
+            }
+            Product product = productService.getProductById(id);
+            headers.add("success", "Valid product id");
+
+            if (product == null) {
+                return new ResponseEntity<>(null, headers, HttpStatus.BAD_REQUEST);
+            }
+            ProductDTO productDTO = from(product);
+
+            return new ResponseEntity<>(productDTO, headers, HttpStatus.OK);
+        } catch (IllegalArgumentException exception) {
+            System.out.println("Error message: " + exception.getMessage());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, exception.getMessage());
+        }
+
     }
 
     @PostMapping
