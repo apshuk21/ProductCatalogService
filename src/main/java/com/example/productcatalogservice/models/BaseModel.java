@@ -5,6 +5,7 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -13,7 +14,7 @@ import java.util.Date;
 public abstract class BaseModel {
     @Id
     private Long id;
-    private Date created_at;
-    private Date updated_at;
+    private LocalDateTime created_at;
+    private LocalDateTime updated_at;
     private State state;
 }

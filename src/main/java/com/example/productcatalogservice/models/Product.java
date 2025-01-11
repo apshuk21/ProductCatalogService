@@ -1,14 +1,19 @@
 package com.example.productcatalogservice.models;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Getter
 @Setter
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Product extends BaseModel{
     private String product_name;
     private String product_description;
@@ -17,4 +22,10 @@ public class Product extends BaseModel{
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
     private Boolean isPrime;
+
+    public Product() {
+        setCreated_at(LocalDateTime.now());
+        setUpdated_at(LocalDateTime.now());
+        setState(State.ACTIVE);
+    }
 }

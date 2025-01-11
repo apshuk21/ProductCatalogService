@@ -37,10 +37,10 @@ class ProductControllerTest {
         when(productService.getAllProducts()).thenReturn(new ArrayList<>());
 
         // Act
-        List<ProductDTO> productDTOList = productController.getAllProducts();
+        ResponseEntity<List<ProductDTO>> productDTOs = productController.getAllProducts();
 
         // Assert
-        assertNotNull(productDTOList);
+        assertNotNull(productDTOs);
     }
 
     @Test

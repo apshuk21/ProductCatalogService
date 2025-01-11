@@ -57,6 +57,16 @@ public class FakeStoreProductService implements IProductService {
         return null;
     }
 
+    @Override
+    public void deleteProduct(Long id) {
+
+    }
+
+    @Override
+    public void deleteAllProducts() {
+
+    }
+
 
     public Product from(FakeStoreProductDTO fakeStoreProductDTO) {
         Product product = new Product();
