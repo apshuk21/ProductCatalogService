@@ -136,7 +136,7 @@ public class ProductController {
 
     private Product from(ProductDTO productDTO) {
         Product product = new Product();
-        product.setId(productDTO.getId());
+//        product.setId(productDTO.getId());
         product.setCreated_at(LocalDateTime.now());
         product.setUpdated_at(LocalDateTime.now());
         product.setState(State.ACTIVE);
@@ -148,8 +148,11 @@ public class ProductController {
             CategoryDTO categoryDTO = productDTO.getCategory();
             Category category = new Category();
 
-            category.setId(categoryDTO.getId());
+//            category.setId(categoryDTO.getId());
             category.setName(categoryDTO.getName());
+            category.setCreated_at(LocalDateTime.now());
+            category.setUpdated_at(LocalDateTime.now());
+            category.setState(State.ACTIVE);
             category.setDescription(categoryDTO.getDescription());
 
             product.setCategory(category);

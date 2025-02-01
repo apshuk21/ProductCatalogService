@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "Products")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Product extends BaseModel{
     private String product_name;
@@ -22,10 +22,4 @@ public class Product extends BaseModel{
     @ManyToOne(cascade = CascadeType.ALL)
     private Category category;
     private Boolean isPrime;
-
-    public Product() {
-        setCreated_at(LocalDateTime.now());
-        setUpdated_at(LocalDateTime.now());
-        setState(State.ACTIVE);
-    }
 }

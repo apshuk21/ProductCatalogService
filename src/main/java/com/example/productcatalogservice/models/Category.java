@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name="Categories")
 public class Category extends BaseModel {
     private String name;
     private String description;

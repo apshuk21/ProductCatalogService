@@ -16,10 +16,10 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
 
     List<Product> findProductByCategoryId(Long categoryId);
 
-    @Query("SELECT p FROM Product p WHERE p.product_price BETWEEN :lower AND :higher")
+    @Query("SELECT p FROM Products p WHERE p.product_price BETWEEN :lower AND :higher")
     List <Product> findProductByAmountBetween(Double lower, Double higher);
 
-    @Query("SELECT c.name from Product AS p JOIN Category as c ON p.category.id = c.id WHERE p.id = :productId")
+    @Query("SELECT c.name from Products AS p JOIN Categories as c ON p.category.id = c.id WHERE p.id = :productId")
     String findCategoryByProductId(Long productId);
 
 }
