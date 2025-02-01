@@ -1,6 +1,7 @@
 package com.example.productcatalogservice.controllers;
 
 import com.example.productcatalogservice.dtos.SearchRequestDTO;
+import com.example.productcatalogservice.dtos.SortParams;
 import com.example.productcatalogservice.models.Product;
 import com.example.productcatalogservice.services.ISearchService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,8 @@ public class SearchController {
         String searchQuery = searchRequestDTO.getSearchQuery();
         int pageSize = searchRequestDTO.getPageSize();
         int pageNumber = searchRequestDTO.getPageNumber();
+        List<SortParams> sortParams = searchRequestDTO.getSortParams();
 
-        return searchService.searchProducts(searchQuery, pageSize, pageNumber);
+        return searchService.searchProducts(searchQuery, pageSize, pageNumber, sortParams);
     }
 }

@@ -98,5 +98,105 @@
       "name": "fitness",
       "description": "Fitness category"
     }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 30,
+    "category": {
+      "name": "footwear",
+      "description": "Footwear category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 35,
+    "category": {
+      "name": "sportswear",
+      "description": "Sportswear category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 40,
+    "category": {
+      "name": "athletic wear",
+      "description": "Athletic wear category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 45,
+    "category": {
+      "name": "casual wear",
+      "description": "Casual wear category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 50,
+    "category": {
+      "name": "skateboarding",
+      "description": "Skateboarding category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 55,
+    "category": {
+      "name": "streetwear",
+      "description": "Streetwear category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 60,
+    "category": {
+      "name": "lifestyle",
+      "description": "Lifestyle category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 30,
+    "category": {
+      "name": "running",
+      "description": "Running category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 30,
+    "category": {
+      "name": "walking",
+      "description": "Walking category"
+    }
+  },
+  {
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 65,
+    "category": {
+      "name": "fitness",
+      "description": "Fitness category"
+    }
   }
 ]
