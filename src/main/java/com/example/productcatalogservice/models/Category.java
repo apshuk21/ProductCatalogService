@@ -1,5 +1,6 @@
 package com.example.productcatalogservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
@@ -18,5 +19,6 @@ public class Category extends BaseModel {
     private String description;
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
+    @JsonIgnoreProperties("category")
     private List<Product> products;
 }

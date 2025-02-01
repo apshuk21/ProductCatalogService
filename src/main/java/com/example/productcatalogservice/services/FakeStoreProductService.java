@@ -58,6 +58,11 @@ public class FakeStoreProductService implements IProductService {
     }
 
     @Override
+    public List<Product> addProducts(List<Product> products) {
+        return List.of();
+    }
+
+    @Override
     public void deleteProduct(Long id) {
 
     }
@@ -71,9 +76,9 @@ public class FakeStoreProductService implements IProductService {
     public Product from(FakeStoreProductDTO fakeStoreProductDTO) {
         Product product = new Product();
         product.setId(fakeStoreProductDTO.getId());
-        product.setProduct_name(fakeStoreProductDTO.getTitle());
-        product.setProduct_description(fakeStoreProductDTO.getDescription());
-        product.setProduct_price(fakeStoreProductDTO.getPrice());
+        product.setProductName(fakeStoreProductDTO.getTitle());
+        product.setProductDescription(fakeStoreProductDTO.getDescription());
+        product.setProductPrice(fakeStoreProductDTO.getPrice());
 
         Category category = new Category();
         category.setName(fakeStoreProductDTO.getCategory());
@@ -86,10 +91,10 @@ public class FakeStoreProductService implements IProductService {
     private FakeStoreProductDTO from(Product product) {
         FakeStoreProductDTO fakeStoreProductDTO = new FakeStoreProductDTO();
         fakeStoreProductDTO.setId(product.getId());
-        fakeStoreProductDTO.setTitle(product.getProduct_name());
-        fakeStoreProductDTO.setDescription(product.getProduct_description());
-        fakeStoreProductDTO.setPrice(product.getProduct_price());
-        fakeStoreProductDTO.setImage(product.getImage_url());
+        fakeStoreProductDTO.setTitle(product.getProductName());
+        fakeStoreProductDTO.setDescription(product.getProductDescription());
+        fakeStoreProductDTO.setPrice(product.getProductPrice());
+        fakeStoreProductDTO.setImage(product.getImageUrl());
 
         if(product.getCategory() != null) {
             fakeStoreProductDTO.setCategory(product.getCategory().getName());

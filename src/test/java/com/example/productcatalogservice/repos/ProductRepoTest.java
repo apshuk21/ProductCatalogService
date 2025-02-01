@@ -21,7 +21,7 @@ class ProductRepoTest {
     public void testQuery() {
         List<Product> products = productRepo.findProductByAmountBetween(200D, 500D);
         for (Product product : products) {
-            System.out.println(product.getProduct_name() + " " + product.getProduct_price());
+            System.out.println(product.getProductName() + " " + product.getProductPrice());
         }
     }
 
@@ -36,7 +36,7 @@ class ProductRepoTest {
         Optional<Product> productOptional = productRepo.findProductById(15L);
         if (productOptional.isPresent()) {
             Product product = productOptional.get();
-            System.out.println(product.getProduct_name() + " " + product.getProduct_price());
+            System.out.println(product.getProductName() + " " + product.getProductPrice());
 
             Category category = product.getCategory();
             System.out.println("Category name: " + category.getName());

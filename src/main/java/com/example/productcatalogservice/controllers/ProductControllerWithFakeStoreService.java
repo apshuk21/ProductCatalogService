@@ -74,9 +74,9 @@ public class ProductControllerWithFakeStoreService {
         ProductDTO productDTO = new ProductDTO();
 
         productDTO.setId(product.getId());
-        productDTO.setProduct_name(product.getProduct_name());
-        productDTO.setProduct_description(product.getProduct_description());
-        productDTO.setProduct_price(product.getProduct_price());
+        productDTO.setProductName(product.getProductName());
+        productDTO.setProductDescription(product.getProductDescription());
+        productDTO.setProductPrice(product.getProductPrice());
 
         if (product.getCategory() != null) {
             CategoryDTO categoryDTO = new CategoryDTO();
@@ -92,9 +92,9 @@ public class ProductControllerWithFakeStoreService {
     private Product from(ProductDTO productDTO) {
         Product product = new Product();
         product.setId(productDTO.getId());
-        product.setProduct_name(productDTO.getProduct_name());
-        product.setProduct_description(productDTO.getProduct_description());
-        product.setProduct_price(productDTO.getProduct_price());
+        product.setProductName(productDTO.getProductName());
+        product.setProductDescription(productDTO.getProductDescription());
+        product.setProductPrice(productDTO.getProductPrice());
 
         if (productDTO.getCategory() != null) {
             CategoryDTO categoryDTO = productDTO.getCategory();

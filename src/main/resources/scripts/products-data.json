@@ -1,99 +1,99 @@
 [
   {
-    "product_name": "Adidas Shoes XA",
-    "product_description": "A pair of shoes from Adidas",
-    "image_url": "http://adidas.com/xyz.jpeg",
-    "product_price": 30,
+    "productName": "Adidas Shoes XA",
+    "productDescription": "A pair of shoes from Adidas",
+    "imageUrl": "http://adidas.com/xyz.jpeg",
+    "productPrice": 30,
     "category": {
       "name": "footwear",
       "description": "Footwear category"
     }
   },
   {
-    "product_name": "Nike Running Shoes",
-    "product_description": "A pair of running shoes from Nike",
-    "image_url": "http://nike.com/abc.jpeg",
-    "product_price": 40,
+    "productName": "Nike Running Shoes",
+    "productDescription": "A pair of running shoes from Nike",
+    "imageUrl": "http://nike.com/abc.jpeg",
+    "productPrice": 40,
     "category": {
       "name": "sportswear",
       "description": "Sportswear category"
     }
   },
   {
-    "product_name": "Puma Sports Shoes",
-    "product_description": "A pair of sports shoes from Puma",
-    "image_url": "http://puma.com/def.jpeg",
-    "product_price": 35,
+    "productName": "Puma Sports Shoes",
+    "productDescription": "A pair of sports shoes from Puma",
+    "imageUrl": "http://puma.com/def.jpeg",
+    "productPrice": 35,
     "category": {
       "name": "athletic wear",
       "description": "Athletic wear category"
     }
   },
   {
-    "product_name": "Reebok Classic Shoes",
-    "product_description": "A pair of classic shoes from Reebok",
-    "image_url": "http://reebok.com/ghi.jpeg",
-    "product_price": 28,
+    "productName": "Reebok Classic Shoes",
+    "productDescription": "A pair of classic shoes from Reebok",
+    "imageUrl": "http://reebok.com/ghi.jpeg",
+    "productPrice": 28,
     "category": {
       "name": "casual wear",
       "description": "Casual wear category"
     }
   },
   {
-    "product_name": "Vans Skate Shoes",
-    "product_description": "A pair of skate shoes from Vans",
-    "image_url": "http://vans.com/jkl.jpeg",
-    "product_price": 45,
+    "productName": "Vans Skate Shoes",
+    "productDescription": "A pair of skate shoes from Vans",
+    "imageUrl": "http://vans.com/jkl.jpeg",
+    "productPrice": 45,
     "category": {
       "name": "skateboarding",
       "description": "Skateboarding category"
     }
   },
   {
-    "product_name": "Converse All Star",
-    "product_description": "A pair of classic Converse shoes",
-    "image_url": "http://converse.com/mno.jpeg",
-    "product_price": 25,
+    "productName": "Converse All Star",
+    "productDescription": "A pair of classic Converse shoes",
+    "imageUrl": "http://converse.com/mno.jpeg",
+    "productPrice": 25,
     "category": {
       "name": "streetwear",
       "description": "Streetwear category"
     }
   },
   {
-    "product_name": "New Balance Sneakers",
-    "product_description": "A pair of sneakers from New Balance",
-    "image_url": "http://newbalance.com/pqr.jpeg",
-    "product_price": 38,
+    "productName": "New Balance Sneakers",
+    "productDescription": "A pair of sneakers from New Balance",
+    "imageUrl": "http://newbalance.com/pqr.jpeg",
+    "productPrice": 38,
     "category": {
       "name": "lifestyle",
       "description": "Lifestyle category"
     }
   },
   {
-    "product_name": "Asics Running Shoes",
-    "product_description": "A pair of running shoes from Asics",
-    "image_url": "http://asics.com/stu.jpeg",
-    "product_price": 42,
+    "productName": "Asics Running Shoes",
+    "productDescription": "A pair of running shoes from Asics",
+    "imageUrl": "http://asics.com/stu.jpeg",
+    "productPrice": 42,
     "category": {
       "name": "running",
       "description": "Running category"
     }
   },
   {
-    "product_name": "Skechers Walking Shoes",
-    "product_description": "A pair of comfortable walking shoes from Skechers",
-    "image_url": "http://skechers.com/vwx.jpeg",
-    "product_price": 30,
+    "productName": "Skechers Walking Shoes",
+    "productDescription": "A pair of comfortable walking shoes from Skechers",
+    "imageUrl": "http://skechers.com/vwx.jpeg",
+    "productPrice": 30,
     "category": {
       "name": "walking",
       "description": "Walking category"
     }
   },
   {
-    "product_name": "Fila Sports Shoes",
-    "product_description": "A pair of sports shoes from Fila",
-    "image_url": "http://fila.com/yza.jpeg",
-    "product_price": 34,
+    "productName": "Fila Sports Shoes",
+    "productDescription": "A pair of sports shoes from Fila",
+    "imageUrl": "http://fila.com/yza.jpeg",
+    "productPrice": 34,
     "category": {
       "name": "fitness",
       "description": "Fitness category"

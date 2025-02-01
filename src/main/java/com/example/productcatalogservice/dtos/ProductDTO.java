@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductDTO {
     private Long id;
-    private String product_name;
-    private String product_description;
-    private String image_url;
-    private Double product_price;
+    private String productName;
+    private String productDescription;
+    private String imageUrl;
+    private Double productPrice;
     private CategoryDTO category;
 }

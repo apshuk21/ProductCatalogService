@@ -14,6 +14,8 @@ public interface IProductService {
 
     Product addProduct(Product product);
 
+    List<Product> addProducts(List<Product> products);
+
     void deleteProduct(Long id);
 
     void deleteAllProducts();

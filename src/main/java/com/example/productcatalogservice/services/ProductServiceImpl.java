@@ -3,9 +3,11 @@ package com.example.productcatalogservice.services;
 import com.example.productcatalogservice.exceptions.ProductAlreadyExistsException;
 import com.example.productcatalogservice.exceptions.ProductNotFoundException;
 import com.example.productcatalogservice.exceptions.ProductNotMatchException;
+import com.example.productcatalogservice.models.Category;
 import com.example.productcatalogservice.models.Product;
+import com.example.productcatalogservice.repos.CategoryRepo;
 import com.example.productcatalogservice.repos.ProductRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +15,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service("StorageProductService")
+@RequiredArgsConstructor
 public class ProductServiceImpl implements IProductService{
 
-    @Autowired
-    private ProductRepo productRepo;
+    private final ProductRepo productRepo;
+    private final CategoryRepo categoryRepo;
 
 
     @Override
@@ -59,13 +62,34 @@ public class ProductServiceImpl implements IProductService{
 
     @Override
     public Product addProduct(Product product) {
-        Optional<Product> productInDB = productRepo.findProductById(product.getId());
+        Optional<Category> categoryOptional = categoryRepo.findByName(product.getCategory().getName());
 
-        if (productInDB.isPresent()) {
-            throw new ProductAlreadyExistsException("Product already exists");
+        if (categoryOptional.isEmpty()) {
+            // Create new Category
+            Category category = categoryRepo.save(product.getCategory());
+            product.setCategory(category);
+        } else {
+            product.setCategory(categoryOptional.get());
         }
 
         return productRepo.save(product);
+    }
+
+    @Override
+    public List<Product> addProducts(List<Product> products) {
+        for (Product product : products) {
+            // Check if category already exists
+            Optional<Category> categoryOptional = categoryRepo.findByName(product.getCategory().getName());
+
+            if (categoryOptional.isPresent()) {
+                product.setCategory(categoryOptional.get());
+            } else {
+               Category newCategory = categoryRepo.save(product.getCategory());
+               product.setCategory(newCategory);
+            }
+        }
+
+        return productRepo.saveAll(products);
     }
 
     @Override

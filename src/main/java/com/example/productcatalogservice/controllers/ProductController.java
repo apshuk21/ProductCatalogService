@@ -19,18 +19,16 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v2/products")
+@RequestMapping("api/v2/products")
 public class ProductController {
 
     @Autowired
     @Qualifier("StorageProductService")
     private IProductService productService;
-    @Autowired
-    private ProductRepo productRepo;
+
 
     @GetMapping
     public ResponseEntity<List<ProductDTO>> getAllProducts() {
@@ -96,6 +94,21 @@ public class ProductController {
                .body(from(product));
     }
 
+    @PostMapping("/all")
+    public ResponseEntity<List<ProductDTO>> addProducts(@RequestBody List<ProductDTO> productDTOS) {
+        List<Product> productsToAdd = productDTOS.stream().map(this::from).toList();
+
+        List<Product> savedProducts = productService.addProducts(productsToAdd);
+
+        List<ProductDTO> productsDTO = savedProducts.stream().map(this::from).toList();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("my-content", "products added");
+        headers.add("custom-header-value", "tested products");
+
+        return ResponseEntity.status(HttpStatus.CREATED).headers(headers).body(productsDTO);
+    }
+
     @PutMapping("/{productId}")
     public ResponseEntity<ProductDTO> updateProduct(@PathVariable("productId") Long id,  @RequestBody ProductDTO productDTO) {
         Product product = productService.updateProduct(id, from(productDTO));
@@ -119,9 +132,9 @@ public class ProductController {
         ProductDTO productDTO = new ProductDTO();
 
         productDTO.setId(product.getId());
-        productDTO.setProduct_name(product.getProduct_name());
-        productDTO.setProduct_description(product.getProduct_description());
-        productDTO.setProduct_price(product.getProduct_price());
+        productDTO.setProductName(product.getProductName());
+        productDTO.setProductDescription(product.getProductDescription());
+        productDTO.setProductPrice(product.getProductPrice());
 
         if (product.getCategory() != null) {
             CategoryDTO categoryDTO = new CategoryDTO();
@@ -140,9 +153,9 @@ public class ProductController {
         product.setCreated_at(LocalDateTime.now());
         product.setUpdated_at(LocalDateTime.now());
         product.setState(State.ACTIVE);
-        product.setProduct_name(productDTO.getProduct_name());
-        product.setProduct_description(productDTO.getProduct_description());
-        product.setProduct_price(productDTO.getProduct_price());
+        product.setProductName(productDTO.getProductName());
+        product.setProductDescription(productDTO.getProductDescription());
+        product.setProductPrice(productDTO.getProductPrice());
 
         if (productDTO.getCategory() != null) {
             CategoryDTO categoryDTO = productDTO.getCategory();

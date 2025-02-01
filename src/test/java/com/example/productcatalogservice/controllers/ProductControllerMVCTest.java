@@ -38,11 +38,11 @@ public class ProductControllerMVCTest {
         // Arrange
         Product product1 = new Product();
         product1.setId(1L);
-        product1.setProduct_name("iPhone14");
+        product1.setProductName("iPhone14");
 
         Product product2 = new Product();
         product2.setId(2L);
-        product2.setProduct_name("Macbook Pro");
+        product2.setProductName("Macbook Pro");
 
         List<Product> products = new ArrayList<>();
         products.add(product1);
@@ -51,12 +51,12 @@ public class ProductControllerMVCTest {
         when(productService.getAllProducts()).thenReturn(products);
 
         ProductDTO productDto1 = new ProductDTO();
-        productDto1.setProduct_name(product1.getProduct_name());
+        productDto1.setProductName(product1.getProductName());
         productDto1.setId(product1.getId());
 
         ProductDTO productDto2 = new ProductDTO();
         productDto2.setId(product2.getId());
-        productDto2.setProduct_name(product2.getProduct_name());
+        productDto2.setProductName(product2.getProductName());
 
         List<ProductDTO> productDTOs = new ArrayList<>();
         productDTOs.add(productDto1);
@@ -73,12 +73,12 @@ public class ProductControllerMVCTest {
         // Arrange
         Product product1 = new Product();
         product1.setId(1L);
-        product1.setProduct_name("iPhone14");
+        product1.setProductName("iPhone14");
 
         when(productService.getProductById(1L)).thenReturn(product1);
 
         ProductDTO productDto = new ProductDTO();
-        productDto.setProduct_name(product1.getProduct_name());
+        productDto.setProductName(product1.getProductName());
         productDto.setId(product1.getId());
 
         // Act and Assert
